@@ -1,0 +1,45 @@
+import tensorflow as tf  # type: ignore<br>
+import numpy as np  # type: ignore<br>
+import matplotlib.pyplot as plt  # type: ignore<br>
+
+# Datos: Valores en Celsius y sus correspondientes en Fahrenheit<br>
+celsius = np.array([-40, -10, 0, 8, 15, 22, 38], dtype=float)<br>
+fahrenheit = np.array([-40, 14, 32, 46, 59, 72, 100], dtype=float)<br>
+
+# Definición de la arquitectura del modelo<br>
+oculta1 = tf.keras.layers.Dense(units=3, input_shape=[1])  # Capa oculta 1 con 3 neuronas<br>
+oculta2 = tf.keras.layers.Dense(units=3)  # Capa oculta 2 con 3 neuronas<br>
+salida = tf.keras.layers.Dense(units=1)  # Capa de salida con 1 neurona (predicción de Fahrenheit)<br>
+
+# Creación del modelo secuencial<br>
+modelo = tf.keras.Sequential([oculta1, oculta2, salida])<br>
+
+# Compilación del modelo<br>
+modelo.compile(<br>
+    optimizer=tf.keras.optimizers.Adam(0.1),  # Optimizador Adam con tasa de aprendizaje de 0.1<br>
+    loss='mean_squared_error'  # Función de pérdida de error cuadrático medio<br>
+)<br>
+
+# Entrenamiento del modelo<br>
+print("Comenzando entrenamiento...")<br>
+historial = modelo.fit(celsius, fahrenheit, epochs=1000, verbose=False)  # Entrena durante 1000 épocas<br>
+
+# Visualización de la pérdida durante el entrenamiento<br>
+plt.xlabel("# Época")  # Etiqueta del eje X<br>
+plt.ylabel("Magnitud de pérdida")  # Etiqueta del eje Y<br>
+plt.plot(historial.history["loss"])  # Grafica la pérdida<br>
+plt.show()  # Muestra el gráfico<br>
+
+# Realizando una predicción<br>
+print("Hagamos una predicción!")<br>
+resultado = modelo.predict([100.0])  # Predicción para 100 grados Celsius<br>
+print("El resultado es " + str(resultado[0][0]) + " fahrenheit!")  # Muestra el resultado<br>
+
+# Imprimir las variables internas del modelo (pesos de las capas)<br>
+print("Variables internas del modelo")<br>
+print(oculta1.get_weights())  # Pesos de la primera capa oculta<br>
+print(oculta2.get_weights())  # Pesos de la segunda capa oculta<br>
+print(salida.get_weights())  # Pesos de la capa de salida<br>
+
+print("Modelo entrenado!")  # Mensaje final<br>
+
