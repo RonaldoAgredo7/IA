@@ -1,95 +1,384 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inteligencia Artificial - Clases y Aprendizajes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Cambia la fuente a Arial o similar */
+        }
+        h1, h2, h3 {
+            font-weight: bold; /* Títulos y subtítulos en negrita */
+        }
+        img {
+            border: 7px solid black; /* Bordes de las imágenes */
+            display: block;
+            margin: 10px 0; /* Margen entre imágenes */
+        }
+    </style>
 </head>
 <body>
     <h1>INTELIGENCIA ARTIFICIAL CLASE 1</h1>
+
+    <h2>Aprendizaje clase 15 de agosto</h2>
+    <h3>Temas sugeridos</h3>
+    <h1>Vimos que datos se repetían y buscamos graficar de cierto que nos brindara dicha información en una gráfica de pastel.</h1>
+    <img src="IA1.jpg">
+
+    <h1>Se agruparon las actividades que eran similares y se contaron manualmente.</h1>
+    <img src="IA2.jpg">
+
+    <h1>Elegimos la columna número 5 y sacamos las palabras repetidas con la ayuda de chatGPT y las rectificamos manualmente e hicimos lo mismo con las palabras únicas (que no se repetían). Luego, hicimos la suma de las palabras repetidas y también sacamos el número de palabras únicas y por último hicimos un gráfico circular 3D con los números de las palabras repetidas.</h1>
+    <img src="IA3.jpg">
+
+    <h1>De manera manual tomé los nombres de IAs distintas y luego conté cuántas veces se repetía cada una, para al final juntar los valores y generar un anillo con Excel donde podemos ver que lo que se repite es chatGPT.</h1>
+    <img src="IA4.jpg">
+
+    <h1>Yo utilicé Excel con fórmulas para sacar las palabras que estaban repetidas separando el texto y luego contando las palabras más importantes de las inteligencias artificiales utilizando esta fórmula: SUMA(SI(NO(ESERROR(BUSCAR("chat"; A25:AY41)));1;0)) + SUMA(SI(NO(ESERROR(BUSCAR("chat gpt"; A25:AY41)));1;0)).</h1>
+    <img src="IA5.jpg">
+
+    <h1>Se realizó utilizando fórmulas de Excel y tablas dinámicas.</h1>
+    <img src="IA6.jpg">
+
+    <h1>1 de 487 David Sarria - Valentina Montealegre: Nos dimos cuenta que hay varias coincidencias y todas apuntan hacia el hecho de que todos contamos con habilidades blandas suficientes y exactas para llevar a cabo un excelente trabajo en equipo.</h1>
+    <img src="IA7.jpg">
+
+    <h1>Básicamente, lo que hicimos fue identificar, contar las palabras y finalmente estructuramos los resultados en una tabla de conteo que permite ver rápidamente la frecuencia de cada palabra y proporciona una visión general de los temas más mencionados, los cuales son la inseguridad, contaminación y transporte.</h1>
+    <img src="IA8.jpg">
+
+    <h2>Aprendizaje clase 22 de agosto</h2>
+    <h1>Hoy aprendimos la definición de la IA, hablamos sobre grafos y la máquina de Turing, miramos una comparación de un juego de ajedrez entre un humano y una computadora.</h1>
+
+    <h2>Aprendizaje clase 29 de agosto</h2>
+    <h2>REDES NEURONALES</h2>
+    <h1>Hoy miramos redes neuronales recordando matrices. Las redes neuronales se componen de capas de nodos, que contienen una capa de entrada, una o más capas ocultas y una capa de salida. Cada nodo se conecta a otro y tiene un peso y un umbral asociados. Las redes neuronales convolucionales constan de varias capas y cada una de ellas percibe pequeñas partes de una imagen. La red neuronal aprende sobre las características visuales de cada clase de imágenes y eventualmente aprende a reconocerlas.</h1>
+
+    <h2>Aprendizaje clase 12 de septiembre</h2>
+    <h2>REDES NEURONALES</h2>
+    <h1>Hoy, usando Google Colab, miramos e hicimos el código para el entrenamiento y la evaluación de un modelo de red neuronal para la conversión de temperaturas entre grados Celsius y Fahrenheit. Primero, definimos los datos de temperatura en Celsius y sus valores correspondientes en Fahrenheit. Luego, construimos y entrenamos un modelo simple de red neuronal con una sola capa densa durante 1000 iteraciones, utilizando el error cuadrático medio como función de pérdida. Después del entrenamiento, visualizamos la pérdida del modelo, realizamos una predicción para 100 grados Celsius y revisamos los pesos internos del modelo. Finalmente, definimos un modelo de red neuronal más complejo con dos capas ocultas para explorar la posibilidad de mejorar el rendimiento.</h1>
+
+    <h2>PARCIAL</h2>
+    <h2>Punto 3</h2>
+    <img src="TABLA.PNG">
+
+    <h2>Punto 4</h2>
+    <img src="4p.PNG">
+
+    <h2>ENCUESTAS</h2>
+    <h2>RESULTADOS</h2>
+    <img src="ENC.PNG">
+    <img src="4.PNG">
+    <img src="CARRERAS.PNG">
+    <img src="5.PNG">
+
+    <h2>RESULTADO</h2>
+    <img src="PROFESION.PNG">
+
+    <h1>PARCIAL SEGUNDO CORTE</h1>
+    <h1>PUNTO 5</h1>
+    <h2>
+        from logic import *<br>
+        <br>
+        # Definimos los símbolos<br>
+        rain = Symbol("rain")<br>
+        bbc = Symbol("bbc")<br>
+        unimayor = Symbol("unimayor")<br>
+        <br>
+        # Conocimientos basados en la situación descrita<br>
+        knowledge = And(<br>
+            Implication(Not(rain), bbc),           # Si no llueve, los estudiantes visitan a BBC<br>
+            Or(bbc, unimayor),                     # Los estudiantes visitaron BBC o Unimayor, pero no ambos<br>
+            Not(And(bbc, unimayor)),               # No visitaron ambos<br>
+            unimayor                               # Los estudiantes visitaron Unimayor hoy<br>
+        )<br>
+        <br>
+        # Verificamos el modelo para BBC y rain<br>
+        bbc_visited = model_check(knowledge, bbc)<br>
+        rain_today = model_check(knowledge, rain)<br>
+        <br>
+        print(f"¿Los estudiantes visitaron BBC? {bbc_visited}")<br>
+        print(f"¿Hoy llovió? {rain_today}")<br>
+    </h2>
+    
+    <h1>PUNTO 6</h1>
+    <h2>
+        import itertools<br>
+        <br>
+        class Sentence():<br>
+            # Clase base para oraciones lógicas<br>
+            <br>
+            def evaluate(self, model):<br>
+                """Evaluates the logical sentence."""<br>
+                raise Exception("nothing to evaluate")  # Método a implementar en subclases<br>
+            <br>
+            def formula(self):<br>
+                """Returns string formula representing logical sentence."""<br>
+                return ""  # Método a implementar en subclases<br>
+            <br>
+            def symbols(self):<br>
+                """Returns a set of all symbols in the logical sentence."""<br>
+                return set()  # Método a implementar en subclases<br>
+            <br>
+            @classmethod<br>
+            def validate(cls, sentence):<br>
+                # Verifica que la oración sea una instancia de Sentence<br>
+                if not isinstance(sentence, Sentence):<br>
+                    raise TypeError("must be a logical sentence")<br>
+            <br>
+            @classmethod<br>
+            def parenthesize(cls, s):<br>
+                """Parenthesizes an expression if not already parenthesized."""<br>
+                <br>
+                def balanced(s):<br>
+                    """Checks if a string has balanced parentheses."""<br>
+                    count = 0<br>
+                    for c in s:<br>
+                        if c == "(":<br>
+                            count += 1<br>
+                        elif c == ")":<br>
+                            if count <= 0:<br>
+                                return False  # Hay paréntesis desbalanceados<br>
+                            count -= 1<br>
+                    return count == 0  # Todos los paréntesis están balanceados<br>
+                <br>
+                # Devuelve la cadena original si ya está balanceada o es una sola letra<br>
+                if not len(s) or s.isalpha() or (<br>
+                    s[0] == "(" and s[-1] == ")" and balanced(s[1:-1])<br>
+                ):<br>
+                    return s<br>
+                else:<br>
+                    return f"({s})"  # Añade paréntesis si es necesario<br>
+                <br>
+        <br>
+        class Symbol(Sentence):<br>
+            # Representa una variable lógica<br>
+            <br>
+            def __init__(self, name):<br>
+                self.name = name  # Nombre del símbolo<br>
+            <br>
+            def __eq__(self, other):<br>
+                # Compara dos símbolos<br>
+                return isinstance(other, Symbol) and self.name == other.name<br>
+            <br>
+            def __hash__(self):<br>
+                return hash(("symbol", self.name))  # Hash para el símbolo<br>
+            <br>
+            def __repr__(self):<br>
+                return self.name  # Representación del símbolo<br>
+            <br>
+            def evaluate(self, model):<br>
+                # Evalúa el valor del símbolo en un modelo dado<br>
+                try:<br>
+                    return bool(model[self.name])<br>
+                except KeyError:<br>
+                    raise EvaluationException(f"variable {self.name} not in model")<br>
+            <br>
+            def formula(self):<br>
+                return self.name  # Devuelve el nombre del símbolo<br>
+            <br>
+            def symbols(self):<br>
+                return {self.name}  # Devuelve un conjunto con el símbolo<br>
+        <br>
+        class Not(Sentence):<br>
+            # Representa la negación de una expresión lógica<br>
+            <br>
+            def __init__(self, operand):<br>
+                Sentence.validate(operand)  # Valida el operando<br>
+                self.operand = operand<br>
+            <br>
+            def __eq__(self, other):<br>
+                return isinstance(other, Not) and self.operand == other.operand<br>
+            <br>
+            def __hash__(self):<br>
+                return hash(("not", hash(self.operand)))  # Hash para la negación<br>
+            <br>
+            def __repr__(self):<br>
+                return f"Not({self.operand})"  # Representación de la negación<br>
+            <br>
+            def evaluate(self, model):<br>
+                return not self.operand.evaluate(model)  # Evalúa la negación<br>
+            <br>
+            def formula(self):<br>
+                return "¬" + Sentence.parenthesize(self.operand.formula())  # Fórmula de la negación<br>
+            <br>
+            def symbols(self):<br>
+                return self.operand.symbols()  # Símbolos del operando<br>
+        <br>
+        class And(Sentence):<br>
+            # Representa la conjunción lógica (AND)<br>
+            <br>
+            def __init__(self, *conjuncts):<br>
+                for conjunct in conjuncts:<br>
+                    Sentence.validate(conjunct)  # Valida cada conjunción<br>
+                self.conjuncts = list(conjuncts)<br>
+            <br>
+            def __eq__(self, other):<br>
+                return isinstance(other, And) and self.conjuncts == other.conjuncts<br>
+            <br>
+            def __hash__(self):<br>
+                return hash(<br>
+                    ("and", tuple(hash(conjunct) for conjunct in self.conjuncts))<br>
+                )  # Hash para la conjunción<br>
+            <br>
+            def __repr__(self):<br>
+                conjunctions = ", ".join(<br>
+                    [str(conjunct) for conjunct in self.conjuncts]<br>
+                )<br>
+                return f"And({conjunctions})"  # Representación de la conjunción<br>
+            <br>
+            def add(self, conjunct):<br>
+                Sentence.validate(conjunct)  # Valida la nueva conjunción<br>
+                self.conjuncts.append(conjunct)  # Añade la conjunción<br>
+            <br>
+            def evaluate(self, model):<br>
+                return all(conjunct.evaluate(model) for conjunct in self.conjuncts)  # Evalúa todas las conjunciones<br>
+            <br>
+            def formula(self):<br>
+                if len(self.conjuncts) == 1:<br>
+                    return self.conjuncts[0].formula()  # Devuelve la fórmula si hay una sola conjunción<br>
+                return " ∧ ".join([Sentence.parenthesize(conjunct.formula())<br>
+                                   for conjunct in self.conjuncts])  # Fórmula de la conjunción<br>
+            <br>
+            def symbols(self):<br>
+                return set.union(*[conjunct.symbols() for conjunct in self.conjuncts])  # Símbolos en todas las conjunciones<br>
+        <br>
+        class Or(Sentence):<br>
+            # Representa la disyunción lógica (OR)<br>
+            <br>
+            def __init__(self, *disjuncts):<br>
+                for disjunct in disjuncts:<br>
+                    Sentence.validate(disjunct)  # Valida cada disyunción<br>
+                self.disjuncts = list(disjuncts)<br>
+            <br>
+            def __eq__(self, other):<br>
+                return isinstance(other, Or) and self.disjuncts == other.disjuncts<br>
+            <br>
+            def __hash__(self):<br>
+                return hash(<br>
+                    ("or", tuple(hash(disjunct) for disjunct in self.disjuncts))<br>
+                )  # Hash para la disyunción<br>
+            <br>
+            def __repr__(self):<br>
+                disjuncts = ", ".join([str(disjunct) for disjunct in self.disjuncts])<br>
+                return f"Or({disjuncts})"  # Representación de la disyunción<br>
+            <br>
+            def evaluate(self, model):<br>
+                return any(disjunct.evaluate(model) for disjunct in self.disjuncts)  # Evalúa si alguna disyunción es verdadera<br>
+            <br>
+            def formula(self):<br>
+                if len(self.disjuncts) == 1:<br>
+                    return self.disjuncts[0].formula()  # Devuelve la fórmula si hay una sola disyunción<br>
+                return " ∨ ".join([Sentence.parenthesize(disjunct.formula())<br>
+                                    for disjunct in self.disjuncts])  # Fórmula de la disyunción<br>
+            <br>
+            def symbols(self):<br>
+                return set.union(*[disjunct.symbols() for disjunct in self.disjuncts])  # Símbolos en todas las disyunciones<br>
+        <br>
+        class Implication(Sentence):<br>
+            # Representa la implicación lógica (→)<br>
+            <br>
+            def __init__(self, antecedent, consequent):<br>
+                Sentence.validate(antecedent)  # Valida el antecedente<br>
+                Sentence.validate(consequent)  # Valida el consecuente<br>
+                self.antecedent = antecedent<br>
+                self.consequent = consequent<br>
+            <br>
+            def __eq__(self, other):<br>
+                return (isinstance(other, Implication)<br>
+                        and self.antecedent == other.antecedent<br>
+                        and self.consequent == other.consequent)<br>
+            <br>
+            def __hash__(self):<br>
+                return hash(("implies", hash(self.antecedent), hash(self.consequent)))  # Hash para la implicación<br>
+            <br>
+            def __repr__(self):<br>
+                return f"Implication({self.antecedent}, {self.consequent})"  # Representación de la implicación<br>
+            <br>
+            def evaluate(self, model):<br>
+                # Evalúa la implicación: si el antecedente es falso, o si el consecuente es verdadero<br>
+                return ((not self.antecedent.evaluate(model))<br>
+                        or self.consequent.evaluate(model))<br>
+            <br>
+            def formula(self):<br>
+                antecedent = Sentence.parenthesize(self.antecedent.formula())<br>
+                consequent = Sentence.parenthesize(self.consequent.formula())<br>
+                return f"{antecedent} => {consequent}"  # Fórmula de la implicación<br>
+            <br>
+            def symbols(self):<br>
+                return set.union(self.antecedent.symbols(), self.consequent.symbols())  # Símbolos en la implicación<br>
+        <br>
+        class Biconditional(Sentence):<br>
+            # Representa la bicondicionalidad (↔)<br>
+            <br>
+            def __init__(self, left, right):<br>
+                Sentence.validate(left)  # Valida la parte izquierda<br>
+                Sentence.validate(right)  # Valida la parte derecha<br>
+                self.left = left<br>
+                self.right = right<br>
+            <br>
+            def __eq__(self, other):<br>
+                return (isinstance(other, Biconditional)<br>
+                        and self.left == other.left<br>
+                        and self.right == other.right)<br>
+            <br>
+            def __hash__(self):<br>
+                return hash(("biconditional", hash(self.left), hash(self.right)))  # Hash para la bicondicional<br>
+            <br>
+            def __repr__(self):<br>
+                return f"Biconditional({self.left}, {self.right})"  # Representación de la bicondicional<br>
+            <br>
+            def evaluate(self, model):<br>
+                # Evalúa la bicondicional: ambos lados deben ser verdaderos o ambos falsos<br>
+                return ((self.left.evaluate(model)<br>
+                         and self.right.evaluate(model))<br>
+                        or (not self.left.evaluate(model)<br>
+                            and not self.right.evaluate(model)))<br>
+            <br>
+            def formula(self):<br>
+                left = Sentence.parenthesize(str(self.left))<br>
+                right = Sentence.parenthesize(str(self.right))<br>
+                return f"{left} <=> {right}"  # Fórmula de la bicondicional<br>
+            <br>
+            def symbols(self):<br>
+                return set.union(self.left.symbols(), self.right.symbols())  # Símbolos en la bicondicional<br>
+        <br>
+        def model_check(knowledge, query):<br>
+            """Checks if knowledge base entails query."""<br>
+            <br>
+            def check_all(knowledge, query, symbols, model):<br>
+                """Checks if knowledge base entails query, given a particular model."""<br>
+                <br>
+                # Si el modelo tiene una asignación para cada símbolo<br>
+                if not symbols:<br>
+                    # Si la base de conocimientos es verdadera en el modelo, entonces la consulta también debe ser verdadera<br>
+                    if knowledge.evaluate(model):<br>
+                        return query.evaluate(model)<br>
+                    return True  # Si no hay símbolos, retorna True<br>
+                <br>
+                else:<br>
+                    # Elegir uno de los símbolos restantes<br>
+                    remaining = symbols.copy()<br>
+                    p = remaining.pop()<br>
+                    <br>
+                    # Crear un modelo donde el símbolo es verdadero<br>
+                    model_true = model.copy()<br>
+                    model_true[p] = True<br>
+                    <br>
+                    # Crear un modelo donde el símbolo es falso<br>
+                    model_false = model.copy()<br>
+                    model_false[p] = False<br>
+                    <br>
+                    # Asegura que la implicación se sostiene en ambos modelos<br>
+                    return (check_all(knowledge, query, remaining, model_true) and<br>
+                            check_all(knowledge, query, remaining, model_false))<br>
+            <br>
+            # Obtener todos los símbolos en conocimiento y consulta<br>
+            symbols = set.union(knowledge.symbols(), query.symbols())<br>
+            <br>
+            # Verifica que el conocimiento implica la consulta<br>
+            return check_all(knowledge, query, symbols, dict())<br>
+    </h2>
+    
 </body>
-
-<h2> Aprendizaje clase 15 de agosto </h2>
-
-<h3> Temas sugeridos</h3>
-<h1> vimos que datos se repetían y buscamos graficar de cierto que nos brindara dicha información en una grafica de pastel
-</h1>
-<img src="IA1.jpg" BORDER=7>
-
-
-<h1> Se agruparon las actividades que eran similares y se contaron manualmente
-</h1>
-<img src="IA2.jpg" BORDER=7>
-
-<h1> Elegimos la columna número 5 
-    y sacamos las palabras repetidas con la ayuda de chatGPT y las rectificamos manualmente e hicimos lo mismo con las palabras únicas (que no se repetían) Luego último hicimos la suma de las palabras repetidas y también sacamos el número de palabras únicas y por último hicimos un gráfico circular 3D con los números de las palabras repetidas
-</h1>
-<img src="IA3.jpg" BORDER=7>
-
-
-<h1> de manera manual tome los nombres de ias distintas y luego conté cuantas veces se repetía cada una, para al final juntar los valores y generar un anillo con Excel donde podemos ver que lo que vas se repite es chatgpt
-</h1>
-<img src="IA4.jpg" BORDER=7>
-
-
-
-<h1> yo utilice excel con formulas para sacar las palabras que estaban repetidas separando el texto y luego contando las palabras mas importantes de las inteligencias artificiales utilizando esta formula para contar las palabras que se repiten, SUMA(SI(NO(ESERROR(BUSCAR("chat"; A25:AY41)));1;0))+SUMA(SI(NO(ESERROR(BUSCAR("chat gpt"; A25:AY41)));1;0))
-</h1>
-<img src="IA5.jpg" BORDER=7>
-
-
-
-
-<h1> SE REALIZO UTILIZANDO FORMULA DE EXCEL Y TABLAS DINAMICAS.
-</h1>
-<img src="IA6.jpg" BORDER=7>
-
-
-
-<h1> 
-    1 de 487
-    David Sarria- Valentina Montealegre: Nos dimos cuenta que hay varias coincidencias y todas apuntan hacia el hecho de que todos contamos con habilidades blandas suficientes y exactas para llevar a cabo un excelente trabajo en equipo.
-</h1>
-<img src="IA7.jpg" BORDER=7>
-
-
-
-<h1> basicamente lo que hicimos fue indentificar, contar las palabras y finalmente estructuramos los resultados en una tabla de conteo que permite ver rápidamente la 
-    frecuencia de cada palabra y proporciona una vision general de los temas mas mencionados. los cuales son la inseguridad, contaminación y transporte
-</h1>
-<img src="IA8.jpg" BORDER=7>
-
-
-<h2> Aprendizaje clase 22 de agosto</h2>
-
-
-<h1> Hoy aprendimos la definicion de la IA, hablamos sobre grafos y la maquina de Turing, miramos una comparacion de un juego de ajedrez entre un humano y una computadora
-</h1>
-
-
-<h2> Aprendizaje clase 29 de agosto</h2>
-
-<h2>REDES NEURONALES</h2>
-<h1> Hoy miramos redes neuronales recordando matrices, en redes neuronales Se componen de capas de nodos,
-     que contienen una capa de entrada, una o más capas ocultas y una capa de salida. Cada nodo se conecta a otro y tiene un peso y un umbral asociados.
-     Las redes neuronales convolucionales constan de varias capas y cada una de ellas percibe pequeñas partes de una imagen. 
-     La red neuronal aprende sobre las características visuales de cada clase de imágenes y eventualmente aprende a reconocerlas 
-</h1>
-
-
-
-
-<h2> Aprendizaje clase 12 de septiembre</h2>
-
-<h2>REDES NEURONALES</h2>
-s
-<h1>Hoy usando google colab miramos e hicimos el codigo  para el entrenamiento y la evaluación de un modelo de red neuronal para la conversión de temperaturas entre grados Celsius y Fahrenheit. 
-    Primero, definimos los datos de temperatura en Celsius y sus valores correspondientes en Fahrenheit. Luego, construimos y entrenamos un modelo simple de red neuronal con una sola capa densa durante 1000 
-    , utilizando el error cuadrático medio como función de pérdida. Después del entrenamiento, visualizamos la pérdida del modelo, realizamos una predicción para 100 grados Celsius y revisamos los pesos internos del modelo. Finalmente, 
-    definimos un modelo de red neuronal más complejo con dos capas ocultas para explorar la posibilidad de mejorar el rendimiento.
-</h1>
-
-
-
-</h1>
 </html>
